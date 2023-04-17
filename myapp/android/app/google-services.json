@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "461367772402",
+    "project_id": "authe-af1a4",
+    "storage_bucket": "authe-af1a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461367772402:android:a2ad9a553dd7bfefb63c6b",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461367772402-kpcpag77e6vr32j4j0tto6i082lj3l0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO84SpE-93PH9UjDzkAiT82acWGQcLzFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "461367772402-kpcpag77e6vr32j4j0tto6i082lj3l0j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "461367772402-lriftkebdrked1qbvl18iiqhn703ab2s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
