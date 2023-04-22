@@ -1,34 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/account_page.dart';
 import 'package:myapp/pages/files_page.dart';
+import 'package:myapp/pages/home_page.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
-
+class AccountPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _AccountPageState createState() => _AccountPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AccountPageState extends State<AccountPage> {
   final user = FirebaseAuth.instance.currentUser!;
-  int _selectedIndex = 0;
 
+  //sign user out
   void signUserOut() {
     FirebaseAuth.instance.signOut();
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  void _navigateToPage(BuildContext context, Widget page) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => page),
-    );
   }
 
   @override
@@ -75,15 +60,28 @@ class _HomePageState extends State<HomePage> {
         ],
         selectedItemColor: Colors.blue[750],
         unselectedItemColor: Colors.white,
-        currentIndex: _selectedIndex,
+        currentIndex: 2,
         onTap: (int index) {
-          if (index == 1) {
-            _navigateToPage(context, FilesPage());
-          } else if (index == 2) {
-            _navigateToPage(context, AccountPage());
+          if (index == 2) {
+            // Do nothing because we are already on this page
+          } else {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => getPage(index)),
+            );
           }
         },
       ),
     );
+  }
+
+  Widget getPage(int index) {
+    if (index == 0) {
+      return HomePage();
+    } else if (index == 1) {
+      return FilesPage();
+    } else {
+      return AccountPage();
+    }
   }
 }

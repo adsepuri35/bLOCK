@@ -1,26 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/home_page.dart';
+import 'package:myapp/pages/account_page.dart';
 
 class FilesPage extends StatefulWidget {
-  FilesPage({super.key});
-
   @override
-  State<FilesPage> createState() => _FilesPageState();
+  _FilesPageState createState() => _FilesPageState();
 }
 
 class _FilesPageState extends State<FilesPage> {
-  final user = FirebaseAuth.instance.currentUser!;
-  int _selectedIndex = 0;
-
-  //sign user out
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
-  }
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index != _selectedIndex) {
+      if (index == 0) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      } else if (index == 2) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => AccountPage()),
+        );
+      }
+    }
   }
 
   @override
@@ -28,26 +32,17 @@ class _FilesPageState extends State<FilesPage> {
     return Scaffold(
       backgroundColor: Colors.grey[800],
       appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: signUserOut,
-            icon: Icon(Icons.logout),
-          )
-        ],
         backgroundColor: Colors.blue[750],
+        title: Text('Files'),
       ),
       body: Center(
         child: Text(
-          "Logged in as: " + user.email!,
+          'Files Page',
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_a_photo),
-        onPressed: () {},
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.grey[850],
