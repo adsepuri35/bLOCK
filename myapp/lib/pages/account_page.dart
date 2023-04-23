@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/files_page.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/components/profile.dart';
+import 'package:myapp/components/account_table.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -36,13 +37,8 @@ class _AccountPageState extends State<AccountPage> {
             child: Column(
               children: [
                 Profile(),
-                Text(
-                  "Logged in as: " + user.email!,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
+                const SizedBox(height: 10),
+                AccountTable(),
               ],
             ),
           ),
