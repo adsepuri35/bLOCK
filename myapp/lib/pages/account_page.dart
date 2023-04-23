@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/files_page.dart';
 import 'package:myapp/pages/home_page.dart';
+import 'package:myapp/components/profile.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -29,12 +30,21 @@ class _AccountPageState extends State<AccountPage> {
         ],
         backgroundColor: Colors.blue[750],
       ),
-      body: Center(
-        child: Text(
-          "Logged in as: " + user.email!,
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                Profile(),
+                Text(
+                  "Logged in as: " + user.email!,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
