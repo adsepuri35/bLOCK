@@ -2,6 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/account_page.dart';
 import 'package:myapp/pages/files_page.dart';
+import 'package:camera/camera.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -11,25 +16,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser!;
-  int _selectedIndex = 0;
+  final _controller = HomeController();
+  late final ImagePicker _imagePicker;
 
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
+  @override
+  void initState() {
+    super.initState();
+    _imagePicker = ImagePicker();
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  Future<void> _takePicture() async {
+    final pickedFile = await _imagePicker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      final Directory appDir = await getApplicationDocumentsDirectory();
+      final String fileName = path.basename(pickedFile.path);
+      final String savedImagePath = '${appDir.path}/$fileName';
+      await File(pickedFile.path).copy(savedImagePath);
+      // Do something with the saved image, for example, display it in an Image widget
+    }
   }
 
-  void _navigateToPage(BuildContext context, Widget page) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => page),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +44,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: signUserOut,
+            onPressed: _controller.signUserOut,
             icon: Icon(Icons.logout),
           )
         ],
@@ -46,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Text(
-          "Logged in as: " + user.email!,
+          "Logged in as: " + _controller.user.email!,
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
@@ -55,7 +61,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_a_photo),
-        onPressed: () {},
+        onPressed: _takePicture,
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.grey[850],
@@ -75,15 +81,36 @@ class _HomePageState extends State<HomePage> {
         ],
         selectedItemColor: Colors.blue[750],
         unselectedItemColor: Colors.white,
-        currentIndex: _selectedIndex,
+        currentIndex: _controller.selectedIndex,
         onTap: (int index) {
-          if (index == 1) {
-            _navigateToPage(context, FilesPage());
-          } else if (index == 2) {
-            _navigateToPage(context, AccountPage());
-          }
+          _controller.onItemTapped(context, index);
         },
       ),
+    );
+  }
+}
+
+class HomeController {
+  final user = FirebaseAuth.instance.currentUser!;
+  int selectedIndex = 0;
+
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
+  void onItemTapped(BuildContext context, int index) {
+    if (index == 1) {
+      _navigateToPage(context, FilesPage());
+    } else if (index == 2) {
+      _navigateToPage(context, AccountPage());
+    }
+    selectedIndex = index;
+  }
+
+  void _navigateToPage(BuildContext context, Widget page) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => page),
     );
   }
 }
