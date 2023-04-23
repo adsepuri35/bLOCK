@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/pages/account_page.dart';
+import 'package:myapp/components/search_bar.dart';
 
 class FilesPage extends StatefulWidget {
   @override
@@ -31,16 +32,14 @@ class _FilesPageState extends State<FilesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[800],
-      appBar: AppBar(
-        backgroundColor: Colors.blue[750],
-        title: Text('Files'),
-      ),
-      body: Center(
-        child: Text(
-          'Files Page',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                SearchBar(),
+              ],
+            ),
           ),
         ),
       ),
