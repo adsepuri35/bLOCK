@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/components/my_button.dart';
 import 'package:myapp/pages/files_page.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/components/profile.dart';
@@ -22,23 +23,16 @@ class _AccountPageState extends State<AccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[800],
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: signUserOut,
-            icon: Icon(Icons.logout),
-          )
-        ],
-        backgroundColor: Colors.blue[750],
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
             child: Column(
               children: [
                 Profile(),
-                const SizedBox(height: 10),
+                const SizedBox(height: 10.0),
                 AccountTable(),
+                const SizedBox(height: 20.0),
+                MyButton(onTap: signUserOut, text: 'Sign Out'),
               ],
             ),
           ),

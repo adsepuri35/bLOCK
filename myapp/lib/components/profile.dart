@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-
 class Profile extends StatelessWidget {
   const Profile({super.key});
 
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
+    String username;
+
+    if (user.displayName! == "") {
+      username = 'Current User';
+    } else {
+      username = user.displayName!;
+    }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(
-          vertical: 10.0, horizontal: 25.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
       child: Row(
         children: [
           Icon(
@@ -24,7 +29,7 @@ class Profile extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  user.displayName!,
+                  username,
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
