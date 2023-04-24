@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'dart:async';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -36,7 +37,6 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,12 +50,22 @@ class _HomePageState extends State<HomePage> {
         ],
         backgroundColor: Colors.blue[750],
       ),
-      body: Center(
-        child: Text(
-          "Logged in as: " + _controller.user.email!,
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+            child: Column(
+              children: [
+                Text(
+                  'Recents',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

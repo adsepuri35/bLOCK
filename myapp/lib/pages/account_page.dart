@@ -28,7 +28,7 @@ class _AccountPageState extends State<AccountPage> {
           child: Center(
             child: Column(
               children: [
-                Profile(),
+                const Profile(),
                 const SizedBox(height: 10.0),
                 AccountTable(),
                 const SizedBox(height: 20.0),

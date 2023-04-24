@@ -9,7 +9,7 @@ class Profile extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser!;
     String username;
 
-    if (user.displayName! == "") {
+    if (user.displayName! == "" || user.displayName! == null) {
       username = 'Current User';
     } else {
       username = user.displayName!;
