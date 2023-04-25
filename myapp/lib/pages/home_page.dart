@@ -41,15 +41,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[800],
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: _controller.signUserOut,
-            icon: Icon(Icons.logout),
-          )
-        ],
-        backgroundColor: Colors.blue[750],
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

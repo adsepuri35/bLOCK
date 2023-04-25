@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/pages/blockchain_confirmation.dart';
+import 'package:myapp/pages/blockchain_submission.dart';
 
 
 // A screen that allows users to take a picture using a given camera.
