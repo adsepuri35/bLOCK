@@ -8,7 +8,7 @@ import 'package:path/path.dart' as path;
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:async';
-import 'package:myapp/camera.dart';
+import 'package:myapp/pages/camera.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -19,26 +19,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = HomeController();
-  /*
-  late final ImagePicker _imagePicker;
-
-  @override
-  void initState() {
-    super.initState();
-    _imagePicker = ImagePicker();
-  }
-
-  Future<void> _takePicture() async {
-    final pickedFile = await _imagePicker.pickImage(source: ImageSource.camera);
-    if (pickedFile != null) {
-      final Directory appDir = await getApplicationDocumentsDirectory();
-      final String fileName = path.basename(pickedFile.path);
-      final String savedImagePath = '${appDir.path}/$fileName';
-      await File(pickedFile.path).copy(savedImagePath);
-      // Do something with the saved image, for example, display it in an Image widget
-    }
-  }
-  */
 
   Future<void> _takePicture() async {
     // Ensure that plugin services are initialized so that `availableCameras()`
