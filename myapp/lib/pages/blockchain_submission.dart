@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:myapp/components/my_button.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 // A widget that displays the picture taken by the user.
 class BlockchainConfirmationScreen extends StatelessWidget {
@@ -12,6 +13,9 @@ class BlockchainConfirmationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _textEditingController =
+        TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.grey[800],
       appBar: AppBar(title: const Text('Submit to Blockchain')),
@@ -37,7 +41,32 @@ class BlockchainConfirmationScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5.0),
-                  titleTextField(),
+                  FractionallySizedBox(
+                    widthFactor: 0.8,
+                    child: TextField(
+                      controller: _textEditingController,
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                          borderSide:
+                              BorderSide(color: Colors.blue, width: 2.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                          borderSide:
+                              BorderSide(color: Colors.blue, width: 2.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                          borderSide:
+                              BorderSide(color: Colors.blue, width: 2.0),
+                        ),
+                        hintText: 'Add a title for your file...',
+                        hintStyle: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
                   const SizedBox(height: 15.0),
                   Container(
                     decoration: BoxDecoration(
@@ -50,12 +79,15 @@ class BlockchainConfirmationScreen extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () async {
+                        String fileTitle = _textEditingController.text;
+
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
                               title: Text('Hooray!'),
-                              content: Text('Your file has been safely stored on the RAM blockchain!'),
+                              content: Text(
+                                  '$fileTitle has been safely stored on the RAM blockchain!'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -69,9 +101,15 @@ class BlockchainConfirmationScreen extends StatelessWidget {
                         );
 
                         //Firebase code here
+                        final FirebaseStorage storage = FirebaseStorage.instance;
+                        final Reference ref = storage.ref().child('$fileTitle');
+                        final File file = File(imagePath);
+                        TaskSnapshot uploadTask = await ref.putFile(file);
+                        String downloadUrl = await uploadTask.ref.getDownloadURL();
                       },
                       style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
                       ),
                       child: Text('Add to Blockchain'),
                     ),
@@ -88,11 +126,11 @@ class BlockchainConfirmationScreen extends StatelessWidget {
   }
 }
 
+/*
 Widget titleTextField() {
   return FractionallySizedBox(
     widthFactor: 0.8,
     child: TextField(
-      
       style: TextStyle(color: Colors.white),
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -113,3 +151,4 @@ Widget titleTextField() {
     ),
   );
 }
+*/
