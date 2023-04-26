@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/pages/account_page.dart';
 import 'package:myapp/components/search_bar.dart';
+import 'package:myapp/components/file_options_box.dart';
 
 class FilesPage extends StatefulWidget {
   @override
@@ -35,10 +36,25 @@ class _FilesPageState extends State<FilesPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
-            child: Column(
-              children: [
-                SearchBar(),
-              ],
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+              child: Column(
+                children: [
+                  SearchBar(),
+                  const SizedBox(height: 25.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FileOptionsBox(text: 'Import File', fileIcon: Icons.file_upload),
+                      const SizedBox(width: 15),
+                      FileOptionsBox(text: 'Upload Image', fileIcon: Icons.image_outlined),
+                      const SizedBox(width: 15),
+                      FileOptionsBox(text: 'Create Folder', fileIcon: Icons.create_new_folder),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
