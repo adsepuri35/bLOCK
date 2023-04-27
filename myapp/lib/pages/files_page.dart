@@ -46,12 +46,25 @@ class _FilesPageState extends State<FilesPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      FileOptionsBox(text: 'Import File', fileIcon: Icons.file_upload),
+                      FileOptionsBox(
+                          text: 'Import File', fileIcon: Icons.file_upload),
                       const SizedBox(width: 15),
-                      FileOptionsBox(text: 'Upload Image', fileIcon: Icons.image_outlined),
+                      FileOptionsBox(
+                          text: 'Upload Image', fileIcon: Icons.image_outlined),
                       const SizedBox(width: 15),
-                      FileOptionsBox(text: 'Create Folder', fileIcon: Icons.create_new_folder),
+                      FileOptionsBox(
+                          text: 'Create Folder',
+                          fileIcon: Icons.create_new_folder),
                     ],
+                  ),
+                  const SizedBox(height: 15.0),
+                  Text(
+                    'Files',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
                   ),
                 ],
               ),
