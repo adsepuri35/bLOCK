@@ -5,6 +5,8 @@ import 'package:myapp/pages/files_page.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/components/profile.dart';
 import 'package:myapp/components/account_table.dart';
+import 'package:camera/camera.dart';
+import 'package:myapp/pages/camera.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -19,9 +21,35 @@ class _AccountPageState extends State<AccountPage> {
     FirebaseAuth.instance.signOut();
   }
 
+  Future<void> _takePicture() async {
+    // Ensure that plugin services are initialized so that `availableCameras()`
+    // can be called before `runApp()`
+    WidgetsFlutterBinding.ensureInitialized();
+
+    // Obtain a list of the available cameras on the device.
+    final cameras = await availableCameras();
+
+    // Get a specific camera from the list of available cameras.
+    final firstCamera = cameras.first;
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => TakePictureScreen(camera: firstCamera)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('lib/images/RAM.png', width: 45, height: 45),
+          ],
+        ),
+      ),
       backgroundColor: Colors.grey[800],
       body: SafeArea(
         child: SingleChildScrollView(
@@ -40,7 +68,7 @@ class _AccountPageState extends State<AccountPage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_a_photo),
-        onPressed: () {},
+        onPressed: _takePicture,
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.grey[850],

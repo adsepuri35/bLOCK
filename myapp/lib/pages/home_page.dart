@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/account_page.dart';
 import 'package:myapp/pages/files_page.dart';
 import 'package:camera/camera.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as path;
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'dart:async';
 import 'package:myapp/pages/camera.dart';
 
@@ -33,7 +29,8 @@ class _HomePageState extends State<HomePage> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => TakePictureScreen(camera: firstCamera)),
+      MaterialPageRoute(
+          builder: (context) => TakePictureScreen(camera: firstCamera)),
     );
   }
 
@@ -41,6 +38,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[800],
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('lib/images/RAM.png', width: 45, height: 45),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
