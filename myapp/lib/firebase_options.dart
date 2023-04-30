@@ -50,6 +50,7 @@ class DefaultFirebaseOptions {
     projectId: 'authe-af1a4',
     authDomain: 'authe-af1a4.firebaseapp.com',
     storageBucket: 'authe-af1a4.appspot.com',
+    measurementId: 'G-ZDY95QN6L0',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -66,6 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '461367772402',
     projectId: 'authe-af1a4',
     storageBucket: 'authe-af1a4.appspot.com',
+    androidClientId: '461367772402-0d3bpa1d8n8kkhs6imt7v4ttlu4uvndk.apps.googleusercontent.com',
     iosClientId: '461367772402-lriftkebdrked1qbvl18iiqhn703ab2s.apps.googleusercontent.com',
     iosBundleId: 'com.example.myapp',
   );
@@ -76,6 +78,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '461367772402',
     projectId: 'authe-af1a4',
     storageBucket: 'authe-af1a4.appspot.com',
+    androidClientId: '461367772402-0d3bpa1d8n8kkhs6imt7v4ttlu4uvndk.apps.googleusercontent.com',
     iosClientId: '461367772402-lriftkebdrked1qbvl18iiqhn703ab2s.apps.googleusercontent.com',
     iosBundleId: 'com.example.myapp',
   );

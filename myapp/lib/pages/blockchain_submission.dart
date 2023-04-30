@@ -4,13 +4,20 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:myapp/components/my_button.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path/path.dart' as path;
+import 'package:firebase_auth/firebase_auth.dart';
 
 // A widget that displays the picture taken by the user.
-class BlockchainConfirmationScreen extends StatelessWidget {
+class BlockchainConfirmationScreen extends StatefulWidget {
   final String imagePath;
 
   const BlockchainConfirmationScreen({super.key, required this.imagePath});
 
+  @override
+  State<BlockchainConfirmationScreen> createState() => _BlockchainConfirmationScreenState();
+}
+
+class _BlockchainConfirmationScreenState extends State<BlockchainConfirmationScreen> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController _textEditingController =
@@ -31,7 +38,7 @@ class BlockchainConfirmationScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Image.file(File(imagePath)),
+                  Image.file(File(widget.imagePath)),
                   const SizedBox(height: 15),
                   const Text(
                     'Title:',
@@ -100,13 +107,30 @@ class BlockchainConfirmationScreen extends StatelessWidget {
                           },
                         );
 
-                        //Firebase code here
+                        /*Firebase code here
                         final FirebaseStorage storage = FirebaseStorage.instance;
                         final Reference ref = storage.ref().child('$fileTitle');
                         final File file = File(imagePath);
                         TaskSnapshot uploadTask = await ref.putFile(file);
                         String downloadUrl = await uploadTask.ref.getDownloadURL();
-                      },
+                        */
+
+                        final User? user = FirebaseAuth.instance.currentUser;
+                        final String userId = user!.uid;
+
+                        File file = File(widget.imagePath);
+                        //String fileName = fileTitle;
+                        FirebaseStorage storage = FirebaseStorage.instance;
+                        Reference ref = storage.ref().child("users/$userId/files/${_textEditingController.text}");
+
+                        UploadTask uploadTask = ref.putFile(file);
+                          await uploadTask.whenComplete(() async {
+                            var url = await ref.getDownloadURL();
+                            String fileUrl = url.toString();
+                          }).catchError((onError) {
+                            print(onError);
+                          });
+                        },
                       style: ButtonStyle(
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),
@@ -125,30 +149,3 @@ class BlockchainConfirmationScreen extends StatelessWidget {
     );
   }
 }
-
-/*
-Widget titleTextField() {
-  return FractionallySizedBox(
-    widthFactor: 0.8,
-    child: TextField(
-      style: TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: Colors.blue, width: 2.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: Colors.blue, width: 2.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: Colors.blue, width: 2.0),
-        ),
-        hintText: 'Add a title for your file...',
-        hintStyle: TextStyle(color: Colors.white),
-      ),
-    ),
-  );
-}
-*/
