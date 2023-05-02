@@ -6,6 +6,7 @@ import 'package:myapp/components/search_bar.dart';
 import 'package:myapp/components/file_options_box.dart';
 import 'package:camera/camera.dart';
 import 'package:myapp/pages/camera.dart';
+import 'package:myapp/components/file_box.dart';
 
 class FilesPage extends StatefulWidget {
   @override
@@ -72,6 +73,7 @@ class _FilesPageState extends State<FilesPage> {
                 const SizedBox(height: 25.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FileOptionsBox(
                         text: 'Import File', fileIcon: Icons.file_upload),
@@ -91,6 +93,18 @@ class _FilesPageState extends State<FilesPage> {
                     fontSize: 24,
                     color: Colors.white,
                   ),
+                ),
+                const SizedBox(height: 15.0),
+                Column(
+                  children: [
+                    FileBox(fileName: 'Sample File', uploadDate: '4/21/23',),
+                    const SizedBox(height: 10,),
+                    FileBox(fileName: 'Sample File 2', uploadDate: '4/21/23',),
+                    const SizedBox(height: 10,),
+                    FileBox(fileName: 'Sample File 3', uploadDate: '4/20/23',),
+                    const SizedBox(height: 10,),
+                    FileBox(fileName: 'Sample File 4', uploadDate: '4/18/23',),
+                  ],
                 ),
               ],
             ),
