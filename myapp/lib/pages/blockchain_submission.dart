@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:myapp/components/my_button.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:path/path.dart' as path;
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // A widget that displays the picture taken by the user.
 class BlockchainConfirmationScreen extends StatefulWidget {
@@ -106,14 +106,6 @@ class _BlockchainConfirmationScreenState extends State<BlockchainConfirmationScr
                             );
                           },
                         );
-
-                        /*Firebase code here
-                        final FirebaseStorage storage = FirebaseStorage.instance;
-                        final Reference ref = storage.ref().child('$fileTitle');
-                        final File file = File(imagePath);
-                        TaskSnapshot uploadTask = await ref.putFile(file);
-                        String downloadUrl = await uploadTask.ref.getDownloadURL();
-                        */
 
                         final User? user = FirebaseAuth.instance.currentUser;
                         final String userId = user!.uid;
