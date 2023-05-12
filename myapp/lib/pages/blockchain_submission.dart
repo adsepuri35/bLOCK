@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
-import 'package:camera/camera.dart';
-import 'package:myapp/components/my_button.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+final User? user = FirebaseAuth.instance.currentUser;
+final String userId = user!.uid;
+
+//Uploading Document Information for Cloud Firestore
+CollectionReference filesCollection = FirebaseFirestore.instance.collection(userId);
+
+Future<DocumentReference<Object?>> addFileMetadata(String fileName, String fileUrl) async {
+  return filesCollection.add({
+    'fileName': fileName.toLowerCase(),
+    'fileUrl': fileUrl,
+  });
+}
 
 // A widget that displays the picture taken by the user.
 class BlockchainConfirmationScreen extends StatefulWidget {
@@ -107,22 +118,21 @@ class _BlockchainConfirmationScreenState extends State<BlockchainConfirmationScr
                           },
                         );
 
-                        final User? user = FirebaseAuth.instance.currentUser;
-                        final String userId = user!.uid;
-
+                        //Uploading file to Firebase
                         File file = File(widget.imagePath);
-                        //String fileName = fileTitle;
                         FirebaseStorage storage = FirebaseStorage.instance;
                         Reference ref = storage.ref().child("users/$userId/files/${_textEditingController.text}");
 
                         UploadTask uploadTask = ref.putFile(file);
-                          await uploadTask.whenComplete(() async {
-                            var url = await ref.getDownloadURL();
-                            String fileUrl = url.toString();
-                          }).catchError((onError) {
-                            print(onError);
-                          });
-                        },
+                        await uploadTask.whenComplete(() async {
+                          var url = await ref.getDownloadURL();
+                          String fileUrl = url.toString();
+                          await addFileMetadata(_textEditingController.text, fileUrl);
+                        }).catchError((onError) {
+                          print(onError);
+                        });
+
+                      },
                       style: ButtonStyle(
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),

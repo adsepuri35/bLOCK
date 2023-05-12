@@ -7,6 +7,10 @@ import 'package:myapp/components/file_options_box.dart';
 import 'package:camera/camera.dart';
 import 'package:myapp/pages/camera.dart';
 import 'package:myapp/components/file_box.dart';
+import 'package:myapp/components/files_display.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FilesPage extends StatefulWidget {
   @override
@@ -106,6 +110,7 @@ class _FilesPageState extends State<FilesPage> {
                     FileBox(fileName: 'Sample File 4', uploadDate: '4/18/23',),
                   ],
                 ),
+                FilesList(),
               ],
             ),
           ),
