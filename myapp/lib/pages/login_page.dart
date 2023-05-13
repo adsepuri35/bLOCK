@@ -173,7 +173,15 @@ class _LoginPageState extends State<LoginPage> {
                     //google button
                     SquareTile(
                       imagePath: 'lib/images/google.png',
-                      onTap: () => AuthService().signInWithGoogle(),
+                      onTap: () async {
+                        try {
+                          await AuthService().signInWithGoogle();
+                          // Successful sign in, navigate to next screen
+                        } catch (e) {
+                          // Display the error message in an AlertDialog or other UI element
+                          print('Error: $e');
+                        }
+                      },
                     ),
 
                     const SizedBox(width: 10),

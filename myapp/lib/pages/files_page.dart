@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/pages/account_page.dart';
-import 'package:myapp/components/search_bar.dart';
 import 'package:myapp/components/file_options_box.dart';
 import 'package:camera/camera.dart';
 import 'package:myapp/pages/camera.dart';
@@ -11,6 +10,7 @@ import 'package:myapp/components/files_display.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:myapp/components/search_bar.dart';
 
 class FilesPage extends StatefulWidget {
   @override
@@ -73,7 +73,7 @@ class _FilesPageState extends State<FilesPage> {
                 const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
             child: Column(
               children: [
-                SearchBar(),
+                Search_Bar(),
                 const SizedBox(height: 25.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -99,17 +99,6 @@ class _FilesPageState extends State<FilesPage> {
                   ),
                 ),
                 const SizedBox(height: 15.0),
-                Column(
-                  children: [
-                    FileBox(fileName: 'Sample File', uploadDate: '4/21/23',),
-                    const SizedBox(height: 10,),
-                    FileBox(fileName: 'Sample File 2', uploadDate: '4/21/23',),
-                    const SizedBox(height: 10,),
-                    FileBox(fileName: 'Sample File 3', uploadDate: '4/20/23',),
-                    const SizedBox(height: 10,),
-                    FileBox(fileName: 'Sample File 4', uploadDate: '4/18/23',),
-                  ],
-                ),
                 FilesList(),
               ],
             ),
