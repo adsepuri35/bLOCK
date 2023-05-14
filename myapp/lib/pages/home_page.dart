@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('lib/images/RAM.png', width: 45, height: 45),
+            Image.asset('lib/images/bLOCK_logo.png', width: 110, height: 110),
           ],
         ),
       ),

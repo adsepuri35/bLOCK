@@ -1,15 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/home_page.dart';
 import 'package:myapp/pages/account_page.dart';
 import 'package:myapp/components/file_options_box.dart';
 import 'package:camera/camera.dart';
 import 'package:myapp/pages/camera.dart';
-import 'package:myapp/components/file_box.dart';
 import 'package:myapp/components/files_display.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:myapp/components/search_bar.dart';
 
 class FilesPage extends StatefulWidget {
@@ -62,7 +57,7 @@ class _FilesPageState extends State<FilesPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('lib/images/RAM.png', width: 45, height: 45),
+            Image.asset('lib/images/bLOCK_logo.png', width: 110, height: 110),
           ],
         ),
       ),

@@ -46,7 +46,7 @@ class _AccountPageState extends State<AccountPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('lib/images/RAM.png', width: 45, height: 45),
+            Image.asset('lib/images/bLOCK_logo.png', width: 110, height: 110),
           ],
         ),
       ),
@@ -61,6 +61,15 @@ class _AccountPageState extends State<AccountPage> {
                 AccountTable(),
                 const SizedBox(height: 20.0),
                 MyButton(onTap: signUserOut, text: 'Sign Out'),
+                const SizedBox(height: 15.0),
+                Text(
+                  'Developed by',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 10.0),
+                Image.asset('lib/images/RAM.png', width: 60, height: 60),
               ],
             ),
           ),
