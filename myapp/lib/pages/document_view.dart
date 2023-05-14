@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class DocumentView extends StatelessWidget {
   final String imageUrl;
   const DocumentView({super.key, required this.imageUrl});
+
+  void _shareImage() {
+    Share.share(imageUrl);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,24 +46,28 @@ class DocumentView extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[850],
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.ios_share_outlined),
-            label: 'Share',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.download),
-            label: 'Download',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.more_horiz),
-            label: 'More',
-          ),
-        ],
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.white,
-      ),
+          backgroundColor: Colors.grey[850],
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.ios_share_outlined),
+              label: 'Share',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.download),
+              label: 'Download',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.more_horiz),
+              label: 'More',
+            ),
+          ],
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Colors.white,
+          onTap: (index) {
+            if (index == 0) {
+              _shareImage();
+            }
+          }),
     );
   }
 }

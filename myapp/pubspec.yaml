@@ -45,6 +45,7 @@ dependencies:
   image_picker: ^0.8.7+4
   flutter_ipfs: ^0.0.2
   firebase_storage: ^11.1.1
+  share: ^2.0.4
 
 dev_dependencies:
   flutter_test:
