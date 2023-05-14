@@ -14,39 +14,46 @@ class DocumentView extends StatelessWidget {
           children: [],
         ),
       ),
-      // The image is stored as a file on the device. Use the `Image.file`
-      // constructor with the given path to display the image.
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 25.0,
-                vertical: 10.0,
-              ),
-              child: Column(
-                children: [
-                  Image.network(imageUrl),
-                ],
+      body: Stack(
+        children: [
+          Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.center,
+          ),
+          SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 25.0,
+                  vertical: 10.0,
+                ),
+                child: Column(
+                  children: [
+                    // Add other content here, if needed
+                  ],
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.grey[850],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.ios_share_outlined),
+            label: 'Share',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.feed),
-            label: 'Files',
+            icon: Icon(Icons.download),
+            label: 'Download',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_rounded),
-            label: 'Account',
+            icon: Icon(Icons.more_horiz),
+            label: 'More',
           ),
         ],
         unselectedItemColor: Colors.white,
