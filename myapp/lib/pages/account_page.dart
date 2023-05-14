@@ -50,7 +50,7 @@ class _AccountPageState extends State<AccountPage> {
           ],
         ),
       ),
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Color(0xff02040f),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
@@ -69,7 +69,7 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                Image.asset('lib/images/RAM.png', width: 60, height: 60),
+                Image.asset('lib/images/RAM_white.png', width: 60, height: 60),
               ],
             ),
           ),
@@ -80,7 +80,7 @@ class _AccountPageState extends State<AccountPage> {
         onPressed: _takePicture,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Colors.blue,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -95,7 +95,7 @@ class _AccountPageState extends State<AccountPage> {
             label: 'Account',
           ),
         ],
-        selectedItemColor: Colors.blue[750],
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         currentIndex: 2,
         onTap: (int index) {

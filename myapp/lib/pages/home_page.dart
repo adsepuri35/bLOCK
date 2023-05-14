@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Color(0xff02040f),
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: _takePicture,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[850],
+        backgroundColor: Colors.blue,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
             label: 'Account',
           ),
         ],
-        selectedItemColor: Colors.blue[750],
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.white,
         currentIndex: _controller.selectedIndex,
         onTap: (int index) {

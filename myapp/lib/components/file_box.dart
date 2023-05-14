@@ -20,6 +20,8 @@ class FileBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String fileSize = _formatSize(metadata.size);
+
     return GestureDetector(
       onTap: () async {
         final imageUrl = await getDownloadUrl(metadata);
@@ -35,12 +37,12 @@ class FileBox extends StatelessWidget {
         width: 550,
         height: 100,
         decoration: BoxDecoration(
-          color: Colors.grey,
+          color: Colors.white,
           border: Border.all(color: Colors.white, width: 2),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 7),
           child: Row(
             children: [
               Icon(
@@ -59,10 +61,13 @@ class FileBox extends StatelessWidget {
                   children: [
                     Text(
                       fileName,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 3.0),
                     Text('Uploaded: $uploadDate'),
+                    const SizedBox(height: 3.0),
+                    Text('File Size: $fileSize'),
                   ],
                 ),
               ),
@@ -71,5 +76,16 @@ class FileBox extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _formatSize(int? size) {
+    int nonNullableSize = size ?? 0;
+    if (nonNullableSize < 1024) {
+      return '$nonNullableSize B';
+    } else if (nonNullableSize < 1024 * 1024) {
+      return '${(nonNullableSize / 1024).toStringAsFixed(1)} KB';
+    } else {
+      return '${(nonNullableSize / (1024 * 1024)).toStringAsFixed(1)} MB';
+    }
   }
 }

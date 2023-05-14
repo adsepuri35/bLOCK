@@ -7,7 +7,7 @@ class Search_Bar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: Colors.white,
         border: Border.all(
           color: Colors.white,
         ),
@@ -16,12 +16,12 @@ class Search_Bar extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Container(
               height: 30,
               child: Icon(
                 Icons.search,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ),
