@@ -6,10 +6,10 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
+    final user = FirebaseAuth.instance.currentUser;
     String username;
 
-    if (user.displayName! == "" || user.displayName! == null) {
+    if (user == null || user.displayName == null || user.displayName == "") {
       username = 'Current User';
     } else {
       username = user.displayName!;
@@ -35,13 +35,14 @@ class Profile extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                Text(
-                  user.email!,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
+                if (user != null)
+                  Text(
+                    user.email!,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
               ],
             ),
           ),

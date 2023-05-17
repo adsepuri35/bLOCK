@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:myapp/components/file_box.dart';
@@ -8,6 +7,7 @@ import 'package:myapp/components/file_box.dart';
 final User? user = FirebaseAuth.instance.currentUser;
 final String userId = user!.uid;
 
+/*
 Future<List<String>> getFileNames() async {
   String filePath = 'users/$userId/files';
   ListResult result = await FirebaseStorage.instance.ref(filePath).listAll();
@@ -20,6 +20,7 @@ Future<List<String>> getFileNames() async {
 
   return fileNames;
 }
+*/
 
 Future<List<FullMetadata>> getMetadataList() async {
   // Get a reference to the folder

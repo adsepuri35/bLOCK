@@ -29,6 +29,7 @@ class FileBox extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => DocumentView(
               imageUrl: imageUrl,
+              fileName: fileName,
             ),
           ),
         );

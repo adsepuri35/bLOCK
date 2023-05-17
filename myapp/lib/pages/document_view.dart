@@ -3,7 +3,8 @@ import 'package:share/share.dart';
 
 class DocumentView extends StatelessWidget {
   final String imageUrl;
-  const DocumentView({super.key, required this.imageUrl});
+  final String fileName;
+  const DocumentView({super.key, required this.imageUrl, required this.fileName});
 
   void _shareImage() {
     Share.share(imageUrl);
@@ -14,10 +15,8 @@ class DocumentView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[800],
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
-        ),
+        title: Text(fileName),
+        centerTitle: true,
       ),
       body: Stack(
         children: [
