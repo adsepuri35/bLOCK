@@ -61,9 +61,13 @@ class _FilesListState extends State<FilesList> {
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: \${snapshot.error}'));
         } else {
+          List<FullMetadata> metadataList = snapshot.data!;
+          if (metadataList.isEmpty) {
+            return Center(child: Text('No files found.'));
+          }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: snapshot.data!
+            children: metadataList
               .expand((metadata) => [
                 FileBox(
                   metadata: metadata,
