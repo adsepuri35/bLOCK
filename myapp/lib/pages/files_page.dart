@@ -6,6 +6,8 @@ import 'package:camera/camera.dart';
 import 'package:myapp/pages/camera.dart';
 import 'package:myapp/components/files_display.dart';
 import 'package:myapp/components/search_bar.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:myapp/pages/blockchain_submission.dart';
 
 class FilesPage extends StatefulWidget {
   @override
@@ -49,6 +51,22 @@ class _FilesPageState extends State<FilesPage> {
     );
   }
 
+  Future<void> _uploadImage() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      String imagePath = image.path;
+
+      // Navigate to BlockchainConfirmationScreen with imagePath
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => BlockchainConfirmationScreen(imagePath: imagePath),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,22 +93,37 @@ class _FilesPageState extends State<FilesPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FileOptionsBox(
-                        text: 'Import File', fileIcon: Icons.file_upload),
+                      text: 'Import File',
+                      fileIcon: Icons.file_upload,
+                      onPressed: () {},
+                    ),
                     const SizedBox(width: 15),
                     FileOptionsBox(
-                        text: 'Upload Image', fileIcon: Icons.image_outlined),
+                      text: 'Upload Image',
+                      fileIcon: Icons.image_outlined,
+                      onPressed: _uploadImage,
+                    ),
                     const SizedBox(width: 15),
                     FileOptionsBox(
-                        text: 'Create Folder',
-                        fileIcon: Icons.create_new_folder),
+                      text: 'Create Folder',
+                      fileIcon: Icons.create_new_folder,
+                      onPressed: () {},
+                    ),
                   ],
                 ),
                 const SizedBox(height: 15.0),
-                Text(
-                  'Files',
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      'Files',
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 15.0),

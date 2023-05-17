@@ -54,17 +54,9 @@ class _HomePageState extends State<HomePage> {
             child: Center(
               child: Column(
                 children: [
-                  Text(
-                    'IdeaVault',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   Image.asset('lib/images/blockchain.png', width: 400, height: 250),
                   Text(
-                    'IdeaVault is a blockchain-supported application that allows for engineers to securely store their documents for future use when filing for patents. The irreversible and distributed nature of the blockchain makes it nearly impossible for files to be altered in any way shape or form.',
+                    'bLOCK is a blockchain-supported application that allows for engineers to securely store their documents for future use when filing for patents. The irreversible and distributed nature of the blockchain makes it nearly impossible for files to be altered in any way shape or form.',
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.white,
