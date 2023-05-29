@@ -7,6 +7,7 @@ import 'package:myapp/components/profile.dart';
 import 'package:myapp/components/account_table.dart';
 import 'package:camera/camera.dart';
 import 'package:myapp/pages/camera.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _AccountPageState extends State<AccountPage> {
   //sign user out
   void signUserOut() {
     FirebaseAuth.instance.signOut();
+    Phoenix.rebirth(context);
   }
 
   Future<void> _takePicture() async {

@@ -118,7 +118,7 @@ class _BlockchainConfirmationScreenState extends State<BlockchainConfirmationScr
                           },
                         );
 
-                        //Uploading file to Firebase
+                        //Uploading file to Firebase & Blockchain
                         File file = File(widget.imagePath);
                         FirebaseStorage storage = FirebaseStorage.instance;
                         Reference ref = storage.ref().child("users/$userId/files/${_textEditingController.text}");

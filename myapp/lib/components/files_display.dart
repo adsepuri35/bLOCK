@@ -42,6 +42,26 @@ Future<List<FullMetadata>> getMetadataList() async {
   return metadataList;
 }
 
+Future<List<String>> getFileNames() async {
+  // Get a reference to the folder
+  FirebaseStorage storage = FirebaseStorage.instance;
+  Reference folderRef = storage.ref('users/$userId/files');
+
+  // List all files in the folder
+  ListResult listResult = await folderRef.listAll();
+
+  // Initialize an empty list to store the file names
+  List<String> fileNames = [];
+
+  // Iterate through the files and retrieve their metadata
+  for (Reference fileRef in listResult.items) {
+    FullMetadata metadata = await fileRef.getMetadata();
+    fileNames.add(metadata.name);
+  }
+
+  return fileNames;
+}
+
 class FilesList extends StatefulWidget {
   const FilesList({super.key});
 
