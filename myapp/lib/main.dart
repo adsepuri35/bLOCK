@@ -4,13 +4,15 @@ import 'package:myapp/firebase_options.dart';
 import 'package:myapp/pages/auth_page.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // Run the app using Phoenix, which allows for hot restarts
   runApp(Phoenix(child: const MyApp()));
 }
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthPage(),
+      home: AuthPage(), // Set the home page to AuthPage
     );
   }
 }
