@@ -45,7 +45,7 @@ class DocumentView extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.grey[850],
+          backgroundColor: Colors.blue,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.ios_share_outlined),

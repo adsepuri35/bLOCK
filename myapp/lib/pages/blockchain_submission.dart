@@ -35,7 +35,7 @@ class _BlockchainConfirmationScreenState extends State<BlockchainConfirmationScr
         TextEditingController();
 
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Color(0xff02040f),
       appBar: AppBar(title: const Text('Submit to Blockchain')),
       // The image is stored as a file on the device. Use the `Image.file`
       // constructor with the given path to display the image.

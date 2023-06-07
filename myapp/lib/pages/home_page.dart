@@ -5,6 +5,7 @@ import 'package:myapp/pages/files_page.dart';
 import 'package:camera/camera.dart';
 import 'dart:async';
 import 'package:myapp/pages/camera.dart';
+import 'package:myapp/components/files_display.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -62,6 +63,23 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                     ),
                   ),
+                  const SizedBox(height: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        'Recents',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15.0),
+                  FilesList(),
                 ],
               ),
             ),
