@@ -2,7 +2,7 @@
     package="com.example.myapp">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
    <application
-        android:label="myapp"
+        android:label="bLOCK"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:myapp/pages/help_page.dart';
 
 class AccountTable extends StatelessWidget {
   const AccountTable({super.key});
@@ -51,40 +52,48 @@ class AccountTable extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 1.0),
-          Container(
-            width: 350.0,
-            height: 50.0,
-            color: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 7,
-                        child: Icon(Icons.help),
-                      ),
-                      Positioned(
-                        left: 40,
-                        top: 10,
-                        child: Text(
-                          'Help',
-                          style: TextStyle(
-                            fontSize: 15,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HelpPage()),
+              );
+            },
+            child: Container(
+              width: 350.0,
+              height: 50.0,
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 7,
+                          child: Icon(Icons.help),
+                        ),
+                        Positioned(
+                          left: 40,
+                          top: 10,
+                          child: Text(
+                            'Help',
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        top: 7,
-                        child: Icon(Icons.arrow_forward_outlined),
-                      ),
-                    ],
+                        Positioned(
+                          right: 0,
+                          top: 7,
+                          child: Icon(Icons.arrow_forward_outlined),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 1.0),
