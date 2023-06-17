@@ -4,6 +4,11 @@ bLOCk is a cross-platform Web3 application that allows professional engineers/sc
 
 ## User Interface
 
+| Home Page | Files Page | Account Page |
+| ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  |
+
 ## Back-end Flowchart
 <img src="myapp\lib\images\flowchart_1.jpg">
 <img src="myapp\lib\images\flowchart_2.jpg">
