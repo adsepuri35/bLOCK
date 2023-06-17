@@ -4,10 +4,17 @@ bLOCk is a cross-platform Web3 application that allows professional engineers/sc
 
 ## User Interface
 
-| Home Page | Files Page | Account Page |
+| Login Page | Register Page | Home Page |
 | ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
+| <img src="myapp\lib\images\login_page.jpg">  | <img src="myapp\lib\images\register_page.jpg">  | <img src="myapp\lib\images\home_page.jpg">  |
+
+| Files Page | Account Page | Camera Access |
+| ------------- | ------------- | ------------- |
+| <img src="myapp\lib\images\files_page.jpg">  | <img src="myapp\lib\images\account_page.jpg">  | <img src="myapp\lib\images\camera_page.jpg">  |
+
+| Blockchain Submission | Blockchain Confirmation | Document View |
+| ------------- | ------------- | ------------- |
+| <img src="myapp\lib\images\blockchain_submission_page.jpg">  | <img src="myapp\lib\images\blockchain_confirmation.jpg">  | <img src="myapp\lib\images\document_view_page.jpg">  |
 
 ## Back-end Flowchart
 <img src="myapp\lib\images\flowchart_1.jpg">
