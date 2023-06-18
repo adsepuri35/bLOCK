@@ -1,10 +1,10 @@
-<img src="myapp\lib\images\bLOCK_logo.png">
+<img src="myapp\lib\images\bLOCK_logo.png" width=250>
 
 bLOCK is a cross-platform Web3 application that allows professional engineers/scientists to upload scans of their engineering/laboratory notebooks (or other intellectual property) to guard against scientific misconduct and assist with intellectual property defense and patenting.
 
 The majority of the app was developed using Flutter & Dart and is available for use on AndroidOS, iOS, macOS, and Windows. User sign in & registration uses Google Firebase with 2-factor Google Authentication. The IPFS (InterPlanetary File System) API was used to store, retrieve, and share files through a secure blockchain. 
 
-## User Interface
+## UI
 
 | Login Page | Register Page | Home Page |
 | ------------- | ------------- | ------------- |
@@ -53,6 +53,42 @@ To view previously uploaded files, go to the files page. On this page, all of yo
 To view a file more in depth, click on the file in the files page. This will bring you to a document view, showing all of the pages of the file. From here, you will also have the option to share the file to others or download a copy of the file from the blockchain.
 ### Account Settings
 You can head over to the accounts page to view any account details and app settings. You can also seek help or give feedback. Lastly, you are able to sign out of your account on this page.
+
+## Testing
+### Internal Testing
+1. The application must be able to be installed on devices from the app store.
+2. Upload Testing
+    - Run 12 trials of uploading files of 10 kB,  1 MB, 10 MB
+    - Record speed of upload for each trial (milliseconds).
+    - Criteria
+        -  All uploads should be successful with no information loss or corruption. All uploads should be encrypted.
+        -  With regular/consistent internet connection, upload speed should be ~2 Mbps or faster  
+3. Download/Share Testing
+   - Run 12 trials of downloading files of 10 kB,  1 MB, 10 MB
+   - Record speed of download for each trial (milliseconds).
+   - Criteria
+     - All downloads should be successful with no information loss or corruption.
+     - With regular/consistent internet connection, download speed should be ~4 Mbps or faster
+
+### Field Testing
+1. Each subject will install the application on their phone or use an emulator.
+2. Each subject will screen record their use of the application.
+3. The subject will create an account and login.
+4. The subject will explore the app and must at least utilize the following features:
+   - Scan photo
+   - Upload file
+   - View/search through past files
+   - Share file
+5. At the end, each subject will fill out a feedback questionnaire.
+6. The 1-5 ratings and other feedback will be used to determine the effectiveness of the product as well as any additional improvements required.
+
+### Testing Results
+
+
+## Future Developments
+- Improved UI/UX
+- Custom Blockchain Node Network to Replace IPFS
+- File Backup using MongoDB
 
 ## Additional Links
 Paper: (https://docs.google.com/document/d/1K0S3tskfX3ZkAxJKy8XR1DOzztoP8xmheaCfkkBo4Oo/edit?usp=sharing) <br />
