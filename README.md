@@ -83,14 +83,24 @@ You can head over to the accounts page to view any account details and app setti
 6. The 1-5 ratings and other feedback will be used to determine the effectiveness of the product as well as any additional improvements required.
 
 ### Testing Results
-<img src="myapp\lib\images\upload_latency.jpg" width=600>
-<img src="myapp\lib\images\download_latency.jpg" width=600>
+<img src="myapp\lib\images\upload_latency.jpg" width=500>
+<img src="myapp\lib\images\download_latency.jpg" width=500>
 
 All files were successfully uploaded/downloaded with no data loss or corruption. On average, image file sizes used with the application are only around 10KB, so the average upload and download latency are only about 31.247 ms (0.031247 seconds) and 15.817 ms (0.015817 seconds), respectively. Larger file sizes 1 MB and 10 MB were also tested for cases in which the user would upload longer documents. The upload latency scaled up as expected (e.g. on average the 10MB file took ~10x longer than the 1MB file for both upload and download), meaning the upload/download speed stayed roughly consistent.
 
 ### Statistical Analysis
 Latency (ms) can be converted to to upload/download speed (Mbps) using the formula:
 8 * [*file size in MB*] / (*latency in ms* / 1000)
+
+<img src="myapp\lib\images\upload_speed.jpg" width=500>
+<img src="myapp\lib\images\download_speed.jpg" width=500>
+
+A t-test will be used to compare the mean download and upload speeds to the benchmark speeds (2 Mbps or faster upload and 4 Mbps or faster download, respectively). The t-test will be conducted for each file size for both download and upload for a total of 6 t-tests. The alpha value used will be 0.05 and n=12 for all 6 of the t-tests.
+
+<img src="myapp\lib\images\upload_stat.jpg" width=500>
+<img src="myapp\lib\images\download_stat.jpg" width=500>
+
+The p-values for all 6 t-tests were less than the alpha value of 0.05. The null hypothesis is rejected and the alternative hypothesis is supported. There is sufficient evidence to support that the mean upload and download speeds are greater than the benchmarks 2 Mbps and 4 Mbps, respectively, for file sizes 10 KB, 1 MB, and 10 MB.
 
 ## Future Developments
 - Improved UI/UX
