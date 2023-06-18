@@ -1,6 +1,8 @@
 <img src="myapp\lib\images\bLOCK_logo.png">
 
-bLOCk is a cross-platform Web3 application that allows professional engineers/scientists to upload scans of their engineering/laboratory notebooks (or other intellectual property) to guard against scientific misconduct and assist with intellectual property defense and patenting.
+bLOCK is a cross-platform Web3 application that allows professional engineers/scientists to upload scans of their engineering/laboratory notebooks (or other intellectual property) to guard against scientific misconduct and assist with intellectual property defense and patenting.
+
+The majority of the app was developed using Flutter & Dart and is available for use on AndroidOS, iOS, macOS, and Windows. User sign in & registration uses Google Firebase with 2-factor Google Authentication. The IPFS (InterPlanetary File System) API was used to store, retrieve, and share files through a secure blockchain. 
 
 ## User Interface
 
@@ -19,6 +21,21 @@ bLOCk is a cross-platform Web3 application that allows professional engineers/sc
 ## Back-end Flowchart
 <img src="myapp\lib\images\flowchart_1.jpg">
 <img src="myapp\lib\images\flowchart_2.jpg">
+
+## Flutter Packages
+- ipfs_client_flutter 1.0.7
+- flutter_ipfs 0.0.2
+- share_plus 7.0.2
+- image_picker 0.8.7+5
+- camera 0.10.5+2 
+- path_provider 2.0.15
+- path 1.8.3
+- firebase_auth 4.6.1
+- google_sign_in 6.1.2
+- flutter_phoenix 1.1.1
+- crypto 3.0.3
+- file_picker 5.3.2
+- http 1.0.0
 
 ## Installation
 bLOCK is available for download in the Google Play Store for devices using AndroidOS, App Store for devices using iOS, and available for download as a desktop application for devices using Windows or macOS.
